@@ -1,6 +1,6 @@
 namespace CleanCodeTraining.Refactoring.Recommendations;
 
-public class InvoiceFileNameGenerator
+public class InvoiceFileNameGenerator : IInvoiceFileNameGenerator
 {
     public string GenerateTextFileName(Guid id, string outputPath)
     {

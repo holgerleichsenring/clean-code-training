@@ -4,7 +4,7 @@ namespace CleanCodeTraining.Refactoring.Recommendations;
 
 public class InvoiceProcessor(InvoiceFileNameGenerator invoiceFileNameGenerator,
     InvoiceSerializer invoiceSerializer,
-    InvoiceValidator invoiceValidator)
+    InvoiceValidator invoiceValidator) : IInvoiceProcessor
 {
     public void ProcessInvoices(List<Invoice> invoices, string outputPath)
     {

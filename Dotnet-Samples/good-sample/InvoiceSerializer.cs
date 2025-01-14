@@ -2,7 +2,7 @@ using CleanCodeTraining.Refactoring.Models;
 
 namespace CleanCodeTraining.Refactoring.Recommendations;
 
-public class InvoiceSerializer
+public class InvoiceSerializer : IInvoiceSerializer
 {
     public void Write(Invoice invoice, string outputFileName)
     {

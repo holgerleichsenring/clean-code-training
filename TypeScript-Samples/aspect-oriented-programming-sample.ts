@@ -14,7 +14,7 @@ class DatabaseConnection {
 }
 
 // Transaction Decorator
-function Transaction(connection: DatabaseConnection) {
+function Transaction() {
     return function (
         target: any,
         propertyKey: string,
@@ -23,6 +23,11 @@ function Transaction(connection: DatabaseConnection) {
         const originalMethod = descriptor.value;
 
         descriptor.value = async function (...args: any[]) {
+            const connection: DatabaseConnection = this.dbConnection; // Dynamically fetch the connection
+            if (!connection) {
+                throw new Error("No database connection available for transaction.");
+            }
+
             await connection.beginTransaction();
             try {
                 const result = await originalMethod.apply(this, args);
@@ -38,7 +43,6 @@ function Transaction(connection: DatabaseConnection) {
         return descriptor;
     };
 }
-
 // Example Service Class
 class OrderService {
     private dbConnection: DatabaseConnection;
@@ -47,7 +51,7 @@ class OrderService {
         this.dbConnection = dbConnection;
     }
 
-    @Transaction(new DatabaseConnection())
+    @Transaction() // No connection instance passed here
     async processOrder(orderId: number): Promise<void> {
         console.log(`Processing order ${orderId}...`);
         // Simulated operations

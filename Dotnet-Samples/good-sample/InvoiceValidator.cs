@@ -3,7 +3,8 @@ using Microsoft.Extensions.Options;
 
 namespace CleanCodeTraining.Refactoring.Recommendations;
 
-public class InvoiceValidator(IOptions<InvoiceValidationOptions> invoiceValidationOptions)
+public class InvoiceValidator(IOptions<InvoiceValidationOptions> invoiceValidationOptions) 
+    : IInvoiceValidator
 {
     public void Validate(Invoice invoice)
     {
