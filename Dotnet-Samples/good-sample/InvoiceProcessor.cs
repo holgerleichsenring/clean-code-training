@@ -2,9 +2,9 @@ using CleanCodeTraining.Refactoring.Models;
 
 namespace CleanCodeTraining.Refactoring.Recommendations;
 
-public class InvoiceProcessor(InvoiceFileNameGenerator invoiceFileNameGenerator,
-    InvoiceSerializer invoiceSerializer,
-    InvoiceValidator invoiceValidator) : IInvoiceProcessor
+public class InvoiceProcessor(IInvoiceFileNameGenerator invoiceFileNameGenerator,
+    IInvoiceSerializer invoiceSerializer,
+    IInvoiceValidator invoiceValidator) : IInvoiceProcessor
 {
     public void ProcessInvoices(List<Invoice> invoices, string outputPath)
     {
