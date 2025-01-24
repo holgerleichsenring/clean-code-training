@@ -1,10 +1,11 @@
-def calculate_total_price(items):
-    total = 0
-    for item in items:
-        if item['type'] == 'regular':
-            total += item['price'] * 1.1  # Adding unnecessary logic for future use
-        elif item['type'] == 'discounted':
-            total += item['price'] * 0.9
+def get_player_status(player):
+    if player.is_online:
+        if player.current_game is not None:
+            return "Player is currently in a game"
         else:
-            total += item['price']  # Over-complicating the simple logic
-    return total
+            if len(player.pending_invitations) > 0:
+                return "Player has pending invitations"
+            else:
+                return "Player is online"
+    else:
+        return "Player is offline"
