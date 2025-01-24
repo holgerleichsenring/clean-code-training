@@ -29,9 +29,8 @@ class CompletedStateHandler implements ProcessStateHandler {
     }
 }
 
-// Manager to process states, including the factory logic
-class ProcessManager {
-    private createHandler(state: ProcessState): ProcessStateHandler {
+class ProcessHandlerFactory {
+    createHandler(state: ProcessState): ProcessStateHandler {
         switch (state) {
             case ProcessState.Open:
                 return new OpenStateHandler();
@@ -43,21 +42,26 @@ class ProcessManager {
                 throw new Error("Invalid Process State.");
         }
     }
+}
 
-    processState(state: ProcessState): void {
-        const handler = this.createHandler(state); // Create handler inside the manager
-        handler.handle(); // Tell handler to process the state
+class ProcessHandlerExecutor {
+    processState(handler: ProcessStateHandler): void {
+        handler.handle(); 
     }
 }
 
 // Usage Example
-const manager = new ProcessManager();
+const factory = new ProcessHandlerFactory();
+const executor = new ProcessHandlerExecutor();
 
 console.log("Processing Open state:");
-manager.processState(ProcessState.Open); // Output: "Handling Open state..."
+var handler = factory.createHandler(ProcessState.Open);
+executor.processState(handler); // Output: "Handling Open state..."
 
 console.log("\nProcessing In Progress state:");
-manager.processState(ProcessState.InProgress); // Output: "Handling In Progress state..."
+var handler = factory.createHandler(ProcessState.InProgress);
+executor.processState(handler); // Output: "Handling In Progress state..."
 
 console.log("\nProcessing Completed state:");
-manager.processState(ProcessState.Completed); // Output: "Handling Completed state..."
+var handler = factory.createHandler(ProcessState.Completed);
+executor.processState(handler); // Output: "Handling Completed state..."
