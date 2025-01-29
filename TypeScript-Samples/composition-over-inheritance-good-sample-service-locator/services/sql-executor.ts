@@ -1,4 +1,4 @@
-import { SqlExecutor } from "../types/command";
+import { SqlExecutor } from "../types/sql-executor-type";
 
 export const createSqlExecutor = (): SqlExecutor => ({
     getConnectionString: () => "Server=localhost;Database=mydb;",

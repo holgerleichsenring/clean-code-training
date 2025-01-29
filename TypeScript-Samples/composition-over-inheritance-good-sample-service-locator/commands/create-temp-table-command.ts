@@ -1,6 +1,6 @@
-import { CommandHandler } from "../types/command-handler";
-import { CreateTempTableContext } from "./contexts/create-temp-table";
-import { SqlExecutor } from "../types/sql-executor";
+import { CommandHandler } from "../types/command-handler-type";
+import { CreateTempTableContext } from "./contexts/create-temp-table-command-context";
+import { SqlExecutor } from "../types/sql-executor-type";
 
 export const createTempTableCommand = (sqlExecutor: SqlExecutor): CommandHandler<CreateTempTableContext> => ({
     execute: async (context) => {
