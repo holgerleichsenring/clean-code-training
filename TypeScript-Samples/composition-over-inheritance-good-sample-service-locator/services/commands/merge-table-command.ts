@@ -1,6 +1,6 @@
-import { CommandHandler } from "../types/command-handler-type";
+import { CommandHandler } from "../../types/command-handler-type";
 import { MergeTableContext } from "./contexts/merge-table-command-context";
-import { SqlExecutor } from "../types/sql-executor-type";
+import { SqlExecutor } from "../../types/sql-executor-type";
 
 export const mergeTableCommand = (sqlExecutor: SqlExecutor): CommandHandler<MergeTableContext> => ({
     execute: async (context) => {

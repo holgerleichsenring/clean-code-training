@@ -1,6 +1,6 @@
-import { CommandHandler } from "../types/command-handler-type";
+import { CommandHandler } from "../../types/command-handler-type";
 import { DropTempTableContext } from "./contexts/drop-temp-table-command-context";
-import { SqlExecutor } from "../types/sql-executor-type";
+import { SqlExecutor } from "../../types/sql-executor-type";
 
 export const dropTempTableCommand = (sqlExecutor: SqlExecutor): CommandHandler<DropTempTableContext> => ({
     execute: async (context) => {

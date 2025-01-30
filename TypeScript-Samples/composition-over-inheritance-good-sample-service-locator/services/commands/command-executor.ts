@@ -1,4 +1,4 @@
-import { useService } from "../context/service-context";
+import { useService } from "../../service-context";
 
 export const createCommandExecutor = () => ({
     executeAll: async (contexts: any[]) => {

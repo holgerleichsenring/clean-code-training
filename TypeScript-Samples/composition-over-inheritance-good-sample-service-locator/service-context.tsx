@@ -1,15 +1,15 @@
 // context/service-context.ts
 import React, { createContext, useContext } from "react";
-import { createSqlExecutor } from "../services/sql-executor";
-import { createCommandExecutor } from "../services/command-executor";
-import { createTempTableCommand } from "../commands/create-temp-table-command";
-import { importDataCommand } from "../commands/import-data-command";
-import { mergeTableCommand } from "../commands/merge-table-command";
-import { dropTempTableCommand } from "../commands/drop-temp-table-command";
-import { CreateTempTableContext, CreateTempTableContextType } from '../commands/contexts/create-temp-table-command-context';
-import { ImportDataContext, ImportDataContextType } from '../commands/contexts/import-data-command-context';
-import { MergeTableContext, MergeTableContextType } from '../commands/contexts/merge-table-command-context';
-import { DropTempTableContext, DropTempTableContextType } from '../commands/contexts/drop-temp-table-command-context';
+import { createSqlExecutor } from "./services/persistence/sql-executor";
+import { createCommandExecutor } from "./services/commands/command-executor";
+import { createTempTableCommand } from "./services/commands/create-temp-table-command";
+import { importDataCommand } from "./services/commands/import-data-command";
+import { mergeTableCommand } from "./services/commands/merge-table-command";
+import { dropTempTableCommand } from "./services/commands/drop-temp-table-command";
+import { CreateTempTableContext, CreateTempTableContextType } from './services/commands/contexts/create-temp-table-command-context';
+import { ImportDataContext, ImportDataContextType } from './services/commands/contexts/import-data-command-context';
+import { MergeTableContext, MergeTableContextType } from './services/commands/contexts/merge-table-command-context';
+import { DropTempTableContext, DropTempTableContextType } from './services/commands/contexts/drop-temp-table-command-context';
 
 // Service Locator (like .NET DI Container)
 type ServiceContextType = Map<string|Function, any>;

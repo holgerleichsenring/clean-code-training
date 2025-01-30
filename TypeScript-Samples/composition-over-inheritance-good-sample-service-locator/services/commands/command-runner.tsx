@@ -1,11 +1,11 @@
 // components/command-runner.tsx
 import React from "react";
-import { useService } from "../context/service-context";
-import { createCommandExecutor } from "../services/command-executor";
-import { CreateTempTableContext, CreateTempTableContextType } from "../commands/contexts/create-temp-table-command-context";
-import { ImportDataContext, ImportDataContextType } from "../commands/contexts/import-data-command-context";
-import { MergeTableContext, MergeTableContextType } from "../commands/contexts/merge-table-command-context";
-import { DropTempTableContext, DropTempTableContextType } from "../commands/contexts/drop-temp-table-command-context";
+import { useService } from "../../service-context";
+import { createCommandExecutor } from "./command-executor";
+import { CreateTempTableContext, CreateTempTableContextType } from "./contexts/create-temp-table-command-context";
+import { ImportDataContext, ImportDataContextType } from "./contexts/import-data-command-context";
+import { MergeTableContext, MergeTableContextType } from "./contexts/merge-table-command-context";
+import { DropTempTableContext, DropTempTableContextType } from "./contexts/drop-temp-table-command-context";
 
 const CommandRunner: React.FC = () => {
     const commandExecutor = useService<ReturnType<typeof createCommandExecutor>>(createCommandExecutor);
